@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class basic {
     public static class Node{
         int val;
@@ -12,6 +15,17 @@ public class basic {
         System.out.print(root.val+" ");
         display(root.left);
         display(root.right);
+    }
+    public static void leveorder(Node root){
+        Queue<Node> q = new LinkedList<>();
+        if(root!=null) q.add(root);
+        while(q.size()>0){
+            Node front = q.remove();
+            System.out.println(front.val+" ");
+            if(front.left!=null) q.add(front.left);
+            if(front.right!=null) q.add(front.right);
+        }
+//        System.out.println();
     }
     static int ans;
     public static int sum(Node root){
@@ -77,6 +91,8 @@ public class basic {
             count = 0;
             System.out.println(totalnodes(a));
             System.out.println(levels(a));
+            System.out.print("level order :");
+            leveorder(a);
         }
     }
 }
